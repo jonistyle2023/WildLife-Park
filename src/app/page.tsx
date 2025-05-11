@@ -1,103 +1,169 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronRight, MapPin, Calendar, Ticket } from "lucide-react"
+import ZooMap from "@/components/zoo-map"
+import AnimalHighlights from "@/components/animal-highlights"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative h-[500px] flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center z-0"
+            style={{
+              backgroundImage: "url('/placeholder.svg?height=500&width=1200')",
+              backgroundBlendMode: "overlay",
+              backgroundColor: "rgba(0,0,0,0.4)",
+            }}
+          />
+          <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">Welcome to WildLife Zoo</h1>
+            <p className="text-xl text-white mb-8 max-w-3xl mx-auto">
+              Discover the wonders of wildlife in our immersive and educational zoo experience
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                Buy Tickets <Ticket className="ml-2 h-5 w-5" />
+              </Button>
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                Plan Your Visit <Calendar className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        {/* Quick Info Section */}
+        <section className="bg-green-50 py-12">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card>
+              <CardContent className="p-6 flex items-start gap-4">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Calendar className="h-6 w-6 text-green-700" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Opening Hours</h3>
+                  <p className="text-gray-600">
+                    Monday - Friday: 9:00 AM - 6:00 PM
+                    <br />
+                    Weekends: 8:00 AM - 8:00 PM
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 flex items-start gap-4">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Ticket className="h-6 w-6 text-green-700" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Ticket Prices</h3>
+                  <p className="text-gray-600">
+                    Adults: $25
+                    <br />
+                    Children (3-12): $15
+                    <br />
+                    Seniors (65+): $20
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 flex items-start gap-4">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <MapPin className="h-6 w-6 text-green-700" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Location</h3>
+                  <p className="text-gray-600">
+                    123 Wildlife Avenue
+                    <br />
+                    Nature City, NC 28000
+                    <br />
+                    <Link href="/directions" className="text-green-600 hover:underline inline-flex items-center mt-1">
+                      Get Directions <ChevronRight className="h-4 w-4" />
+                    </Link>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Featured Animals */}
+        <section className="py-16 container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Featured Animals</h2>
+          <AnimalHighlights />
+          <div className="text-center mt-8">
+            <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
+              View All Animals <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </section>
+
+        {/* Zoo Map */}
+        <section className="py-16 bg-green-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-4">Zoo Map</h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Plan your visit with our interactive map. Explore different zones and locate your favorite animals.
+            </p>
+            <ZooMap />
+            <div className="text-center mt-8">
+              <Button className="bg-green-600 hover:bg-green-700">
+                Download Map <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Events & Programs */}
+        <section className="py-16 container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Upcoming Events</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="overflow-hidden">
+                <div className="h-48 bg-gray-200">
+                  <img
+                    src={`/placeholder.svg?height=200&width=400&text=Event+${i}`}
+                    alt={`Event ${i}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="font-bold text-xl">
+                      {i === 1 ? "Feeding Time" : i === 2 ? "Conservation Talk" : "Kids Safari Day"}
+                    </h3>
+                    <div className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                      {i === 1 ? "Daily" : i === 2 ? "Weekly" : "Special"}
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    {i === 1
+                      ? "Watch our zookeepers feed the animals and learn about their diets."
+                      : i === 2
+                        ? "Join our conservation experts for an educational talk about wildlife preservation."
+                        : "A special day for kids with face painting, games, and educational activities."}
+                  </p>
+                  <Button variant="outline" className="w-full">
+                    Learn More
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
-  );
+  )
 }
+
