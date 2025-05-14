@@ -10,6 +10,8 @@
 > 
 > Project in development, not all features are implemented yet.
 
+---
+
 ## Stack Technologies 
 
 - **Next.js** - Como framework principal de React, aprovechando el App Router para la navegación y estructura del proyecto.
@@ -20,3 +22,8 @@
 - **Lucide React** - Biblioteca de iconos SVG para los elementos visuales de la interfaz.
 - **Radix UI** - Biblioteca de componentes primitivos de bajo nivel que shadcn/ui utiliza como base.
 - **React Hook Form** (implícito en los formularios) - Para manejar los estados y validaciones de los formularios de login y registro.
+
+---
+## Descripción del proyecto
+
+Este proyecto es un sitio web básico diseñado para parques, zoológicos y negocios relacionados. La estructura del proyecto se basa en Next.js, utilizando su sistema de enrutamiento y la carpeta `app` para organizar las páginas y componentes de manera eficiente.
